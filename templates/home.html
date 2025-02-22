@@ -1,119 +1,122 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Accueil - Projet d'Entreprise</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    
-    <!-- Styles complémentaires pour améliorer le design -->
-    <style>
-        /* Effet de transition sur les boutons */
-        .btn {
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .btn:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        /* Header avec dégradé pour un look moderne */
-        header {
-            background: linear-gradient(135deg, #007bff, #00c6ff);
-            color: white;
-        }
-    </style>
-</head>
-<body class="bg-light">
+import React, { useState } from 'react';
+import { UserPlus, LogIn, Lock, Briefcase } from 'lucide-react';
 
-    <!-- Barre de Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/">Projet d'Entreprise</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">
-                            <i class="fa-solid fa-user-plus"></i> Créer un compte
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">
-                            <i class="fa-solid fa-sign-in-alt"></i> Connexion
-                        </a>
-                    </li>
-                </ul>
+function App() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Gérer la soumission du formulaire
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 to-slate-100">
+      {/* Navigation */}
+      <nav className="bg-gradient-to-r from-red-600 to-red-700 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16 items-center">
+            <div className="flex-shrink-0">
+              <Briefcase className="h-8 w-8 text-white" />
             </div>
+            <div className="flex space-x-4">
+              <a href="/register" className="text-white/90 hover:text-white flex items-center space-x-1">
+                <UserPlus size={18} />
+                <span>Créer un compte</span>
+              </a>
+              <a href="/login" className="text-white/90 hover:text-white flex items-center space-x-1">
+                <LogIn size={18} />
+                <span>Connexion</span>
+              </a>
+            </div>
+          </div>
         </div>
-    </nav>
+      </nav>
 
-    <!-- Contenu Principal -->
-    <main>
-        <!-- Section d'Accueil -->
-        <header class="text-center py-5">
-            <div class="container">
-                <h1 class="display-4">PROJET D’ENTREPRISE</h1>
-                <p class="lead">
-                    Parce qu’un projet d'entreprise réussi équilibre vie professionnelle et vie personnelle, 
-                    le (la) dirigeant(e) développera une activité flexible et éthique. Elle lui offrira à la fois autonomie, 
-                    sens et rémunération. En favorisant la passion, le bien-être et le développement de compétences, 
-                    ce projet conciliera réussite professionnelle et épanouissement personnel.
-                </p>
+      {/* En-tête */}
+      <header className="relative py-8 bg-gradient-to-r from-blue-600 to-blue-700">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-white">
+            <h2 className="text-2xl font-semibold mb-2">
+              PROJET D'ENTREPRISE
+            </h2>
+            <p className="text-sm text-white/90 leading-relaxed max-w-2xl">
+              Parce qu'un projet d'entreprise réussi équilibre vie professionnelle et vie personnelle,
+              le (la) dirigeant(e) développera une activité flexible et éthique. Elle lui offrira à la fois autonomie,
+              sens et rémunération. En favorisant la passion, le bien-être et le développement de compétences,
+              ce projet conciliera réussite professionnelle et épanouissement personnel.
+            </p>
+          </div>
+        </div>
+      </header>
+
+      {/* Section Principale */}
+      <main className="flex-grow">
+        <div className="max-w-md mx-auto px-4 py-8">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <h3 className="text-2xl font-semibold text-center mb-8">Connexion</h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  Votre email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                  Votre mot de passe
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-2 px-4 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center space-x-2"
+              >
+                <LogIn size={18} />
+                <span>Se connecter</span>
+              </button>
+            </form>
+            <div className="mt-6 text-center">
+              <a href="/forgot-password" className="text-sm text-blue-600 hover:text-blue-800 flex items-center justify-center space-x-1">
+                <Lock size={16} />
+                <span>Mot de passe oublié ?</span>
+              </a>
             </div>
-        </header>
+          </div>
 
-        <!-- Formulaire de Connexion -->
-        <section class="container my-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card shadow p-4">
-                        <h2 class="text-center mb-4">Connexion</h2>
-                        <form method="POST" action="/login" aria-label="Formulaire de connexion">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Votre email</label>
-                                <input id="email" type="email" class="form-control" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Votre mot de passe</label>
-                                <input id="password" type="password" class="form-control" name="password" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">
-                                <i class="fa-solid fa-sign-in-alt"></i> Se connecter
-                            </button>
-                        </form>
-                        <div class="text-center mt-3">
-                            <a href="/forgot_password" class="text-decoration-none">Mot de passe oublié ?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bouton Créer un compte -->
-        <section class="text-center my-4">
-            <p>Pas encore de compte ?</p>
-            <a href="/register" class="btn btn-success btn-lg">
-                <i class="fa-solid fa-user-plus"></i> Créez votre compte
+          <div className="text-center mt-8 space-y-4">
+            <p className="text-gray-600">Pas encore de compte ?</p>
+            <a
+              href="/register"
+              className="inline-flex items-center space-x-2 bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors"
+            >
+              <UserPlus size={20} />
+              <span>Créez votre compte</span>
             </a>
-        </section>
-    </main>
+          </div>
+        </div>
+      </main>
 
-    <!-- Pied de Page -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p class="mb-0">© 2025 Projet d'Entreprise - Tous droits réservés</p>
-    </footer>
+      {/* Pied de page */}
+      <footer className="bg-gray-900 text-gray-300 py-6 text-center">
+        <p>© 2025 Projet d'Entreprise - Tous droits réservés</p>
+      </footer>
+    </div>
+  );
+}
 
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
+export default App;
