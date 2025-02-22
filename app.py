@@ -1,6 +1,7 @@
 # Forcer le redéploiement sur Railway
 from flask import Flask, render_template, request, redirect, session, url_for
 import sqlite3
+import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer
@@ -134,7 +135,8 @@ def logout():
     session.clear()
     return redirect("/")
 
-# 📌 Démarrage de l'application
+# 📌 Démarrage de l'application avec le bon port pour Railway
 if __name__ == "__main__":
     create_tables()
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8080))  # Utilisation du port défini par Railway
+    app.run(host="0.0.0.0", port=port, debug=True)
