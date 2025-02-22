@@ -6,4 +6,3 @@ Werkzeug
 Jinja2
 click
 blinker
-sqlite3
