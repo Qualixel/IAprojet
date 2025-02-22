@@ -22,8 +22,15 @@ mail = Mail(app)
 serializer = URLSafeTimedSerializer(app.secret_key)
 
 # 📌 Connexion à la base de données
+import os
+
 def get_db():
     db_path = os.path.join(os.getcwd(), "database.db")
+
+    # Vérifier si la base existe, sinon la créer
+    if not os.path.exists(db_path):
+        open(db_path, 'w').close()
+
     conn = sqlite3.connect(db_path, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     return conn
