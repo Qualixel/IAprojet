@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Répondez aux questions</h1>
+    
+    <form method="POST">
+        <label for="question">Question :</label>
+        <input type="text" name="question" required><br>
+
+        <label for="response">Réponse :</label>
+        <textarea name="response" required></textarea><br>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+
+    <h2>Vos réponses</h2>
+    <ul>
+        {% for res in responses %}
+            <li><strong>{{ res['question'] }}</strong> : {{ res['response'] }}</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <a href="/logout">Se déconnecter</a>
+</body>
+</html>

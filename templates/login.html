@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Connexion</h1>
+    <form method="POST">
+        Email: <input type="email" name="email" required><br>
+        Mot de passe: <input type="password" name="password" required><br>
+        <button type="submit">Se connecter</button>
+    </form>
+<p><a href="/forgot_password">Mot de passe oublié ?</a></p>
+    <p>Pas encore inscrit ? <a href="/register">Créer un compte</a></p>
+</body>
+</html>
