@@ -4,7 +4,7 @@ css_content = """body {
 }
 
 .card {
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .btn {
@@ -12,22 +12,22 @@ css_content = """body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 400px;
 }
 
 /* Réduction de la taille du titre et du texte d'accroche */
 h1.display-4 {
-    font-size: 2.5rem; /* Ajustez cette valeur selon vos besoins */
+    font-size: 1.5rem; /* Ajustez cette valeur selon vos besoins */
     font-weight: bold; /* Optionnel : garder un effet marqué */
 }
 
 p.lead {
-    font-size: 1.2rem; /* Ajustez cette valeur pour le texte suivant */
-    line-height: 1.4; /* Ajustement de l'espacement pour une meilleure lisibilité */
+    font-size: 1.0rem; /* Ajustez cette valeur pour le texte suivant */
+    line-height: 1.0; /* Ajustement de l'espacement pour une meilleure lisibilité */
 }
 
 h1, h2, h3 {
-    color: #333;
+    color: ##3a8eba;
 }
 """
 
