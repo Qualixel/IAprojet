@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer
 
+# 📌 Création de l'application Flask
 app = Flask(__name__)
 app.secret_key = "votre_secret_key"  # Changez ceci pour plus de sécurité
 
@@ -135,8 +136,12 @@ def logout():
     session.clear()
     return redirect("/")
 
+# 📌 Fonction pour Gunicorn
+def create_app():
+    create_tables()
+    return app
+
 # 📌 Démarrage de l'application avec le bon port pour Railway
 if __name__ == "__main__":
-    create_tables()
     port = int(os.environ.get("PORT", 8080))  # Utilisation du port défini par Railway
     app.run(host="0.0.0.0", port=port)
