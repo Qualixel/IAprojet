@@ -1,8 +1,8 @@
-Flask
-Flask-Mail
-gunicorn
-itsdangerous
-Werkzeug
-Jinja2
-click
-blinker
+Flask 
+Flask-Mail 
+gunicorn 
+itsdangerous 
+Werkzeug 
+Jinja2 
+click 
+blinker 
