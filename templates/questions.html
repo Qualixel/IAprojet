@@ -1,32 +1,29 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questions</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <h1>Répondez aux questions</h1>
-    
-    <form method="POST">
-        <label for="question">Question :</label>
-        <input type="text" name="question" required><br>
+<div class="container mt-5">
+    <h2 class="text-center">Répondez aux questions</h2>
 
-        <label for="response">Réponse :</label>
-        <textarea name="response" required></textarea><br>
-
-        <button type="submit">Enregistrer</button>
+    <form method="POST" class="mt-4">
+        <div class="mb-3">
+            <label class="form-label">Question</label>
+            <input type="text" name="question" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Réponse</label>
+            <textarea name="response" class="form-control" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Enregistrer</button>
     </form>
 
-    <h2>Vos réponses</h2>
-    <ul>
+    <h3 class="mt-5">Vos réponses</h3>
+    <div class="row mt-3">
         {% for res in responses %}
-            <li><strong>{{ res['question'] }}</strong> : {{ res['response'] }}</li>
+        <div class="col-md-6">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">{{ res['question'] }}</h5>
+                    <p class="card-text">{{ res['response'] }}</p>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
-
-    <br>
-    <a href="/logout">Se déconnecter</a>
-</body>
-</html>
+    </div>
+</div>
