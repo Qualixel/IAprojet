@@ -2,4 +2,3 @@ Flask
 Flask-Mail
 itsdangerous
 gunicorn
-sqlite3
